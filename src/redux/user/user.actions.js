@@ -1,7 +1,7 @@
 import UserActionTypes from './user.types';
 
 // SIGN UP WITH EMAIL
-export const emailSignUpRequest = userCredential => {
+export const emailSignUpRequest = userCredentials => {
   return {
     type: UserActionTypes.EMAIL_SIGN_UP_REQUEST,
     payload: userCredential
@@ -23,28 +23,29 @@ export const emailSignUpFailure = error => {
 }
 // END SIGN UP WITH EMAIL
 
-// LOGIN WITH EMAIL
-export const userLoginRequest = userCredential => {
+// SIGN IN SECTION
+// ---SIGN IN WITH EMAIL
+export const emailSignInRequest = userCredentials => {
   return {
     type: UserActionTypes.EMAIL_SIGN_IN_REQUEST,
     payload: userCredential
   };
 }
 
-export const userLoginSuccess = user => {
+export const signInSuccess = user => {
   return {
-    type: UserActionTypes.EMAIL_SIGN_IN_SUCCESS,
+    type: UserActionTypes.SIGN_IN_SUCCESS,
     payload: user
   };
 }
 
-export const userLoginFailure = error => {
+export const signInFailure = error => {
   return {
-    type: UserActionTypes.EMAIL_SIGN_IN_FAILURE,
+    type: UserActionTypes.SIGN_IN_FAILURE,
     payload: error
   };
 }
-// END LOGIN WITH EMAIL
+// END SIGN IN SECTION
 
 // SIGN OUT
 export const signOutRequest = () => {

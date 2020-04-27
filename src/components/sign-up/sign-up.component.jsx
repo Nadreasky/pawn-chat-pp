@@ -4,7 +4,7 @@ import FormInput from '../form-input/form-input.component';
 
 import './sign-up.styles.scss';
 
-const SignUp = () => {
+const SignUp = ({ signUp }) => {
   const [userCredentials, setCredentials] = useState({
     displayName: '',
     email: '',
@@ -21,7 +21,13 @@ const SignUp = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(event);
+
+    if (password !== confirmPassword) {
+      alert('Password does not match!');
+      return;
+    }
+
+    signUp({ email, password, displayName });
   }
 
   return (

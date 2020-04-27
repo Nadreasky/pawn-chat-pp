@@ -4,7 +4,7 @@ import FormInput from '../form-input/form-input.component';
 
 import './signin.styles.scss';
 
-const SignIn = () => {
+const SignIn = ({ signInWithEmail }) => {
   const [userCredentials, setCredentials] = useState({ email: '', password: '' })
   const { email, password } = userCredentials;
 
@@ -16,6 +16,8 @@ const SignIn = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
+
+    signInWithEmail({ email, password });
   }
 
   return (

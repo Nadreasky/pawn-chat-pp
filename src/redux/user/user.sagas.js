@@ -4,8 +4,9 @@ import UserActionTypes from './user.types';
 import {
   emailSignUpSuccess,
   emailSignUpFailure,
-  userLoginSuccess,
-  userLoginFailure
+  signInSuccess,
+  signInFailure,
+  emailSignInRequest
 } from './user.actions';
 
 import {
@@ -27,17 +28,26 @@ export function* getSnapshotFromUserAuth(user, additionalData = null) {
   try {
     const userRef = yield call(createUserProfileDocument, user, additionalData);
     const userSnapshot = yield userRef.get();
-    yield put(userLoginSuccess({
+    yield put(signInSuccess({
       id: userSnapshot.id,
       ...userSnapshot.data()
     }));
   } catch (error) {
-    yield put(userLoginFailure(error.message));
+    yield put(signInFailure(error.message));
   }
 }
 
 export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   yield getSnapshotFromUserAuth(user, additionalData);
+}
+
+export function* signInWithEmail({ payload: { email, password} }) {
+  try {
+    const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    yield getSnapshotFromUserAuth(user);
+  } catch (error) {
+    yield put(signInFailure(error.message));
+  }
 }
 // End Effect Functions
 
@@ -46,14 +56,21 @@ export function* onEmailSignUpRequest() {
   yield takeLatest(
     UserActionTypes.EMAIL_SIGN_UP_REQUEST,
     signUp
-  )
+  );
 }
 
 export function* onEmailSignUpSuccess() {
   yield takeLatest(
     UserActionTypes.EMAIL_SIGN_UP_SUCCESS,
     signInAfterSignUp
-  )
+  );
+}
+
+export function* onSignInRequest() {
+  yield takeLatest(
+    UserActionTypes.EMAIL_SIGN_IN_REQUEST,
+    signInWithEmail
+  );
 }
 // End
 
@@ -61,5 +78,6 @@ export function* userSagas() {
   yield all([
     call(onEmailSignUpRequest),
     call(onEmailSignUpSuccess),
+    call(onSignInRequest),
   ]);
 }
