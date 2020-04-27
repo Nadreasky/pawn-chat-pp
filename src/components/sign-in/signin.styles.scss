@@ -1,0 +1,45 @@
+.sign-in {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  flex: 0 1 380px;
+  color: hotpink;
+
+  // border: 1px solid fuchsia;
+  border-radius: 5%;
+  padding: 2em;
+  -webkit-box-shadow: 0px 5px 10px 1px rgba(255,105,180,1);
+  -moz-box-shadow: 0px 5px 10px 1px rgba(255,105,180,1);
+  box-shadow: 0px 5px 10px 1px rgba(255,105,180,1);
+
+  .title {
+    margin: 0;
+    color: mediumvioletred;
+  }
+
+  .custom-button {
+    width: fit-content;
+    height: 2em;
+    background-color: white;
+    color: hotpink;
+    border: 1px solid hotpink;
+    border-radius: 5%;
+    font-size: 1.5rem;
+    font-family: 'Baloo Bhaina 2';
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0em 0.75em;
+    letter-spacing: 0em;
+    display: flex;
+    align-items: flex-end;
+    margin-left: auto;
+    transition: background-color 500ms ease-out;
+
+    &:hover {
+      background-color: hotpink;
+      color: white;
+    }
+  }
+}

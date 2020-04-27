@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense, lazy } from 'react';
+import { Switch, Route } from 'react-router-dom';
+
 import './App.css';
 
-function App() {
+import Spinner from './components/spinner/spinner.component';
+
+const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
+const SignUpPage = lazy(() => import('./pages/signup-page/signup-page.component'));
+const SignInPage = lazy(() => import('./pages/signin-page/signin-page.component'));
+const ChattingPage = lazy(() => import('./pages/chatting-page/chatting-page.component'));
+
+const App = () => {
+  const isLoggedIn = false;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <Switch>
+        <Suspense fallback={ <Spinner /> }>
+          <Route path='/signup' component={ SignUpPage } />
+          <Route path='/signin' component={ SignInPage } />
+          <Route exact path='/' render={() => isLoggedIn ? (<ChattingPage />) : (<HomePage />)} />
+        </Suspense>
+      </Switch>
+    </React.Fragment>
+  )
 }
 
 export default App;

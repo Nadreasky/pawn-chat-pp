@@ -1,0 +1,49 @@
+.home {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightpink;
+  color: mediumvioletred;
+
+  .logo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .title {
+    margin: 0.5em 0 0 0;
+  }
+
+  .description {
+    margin: 0;
+  }
+
+  .authorize-section {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2em;
+
+    .link {
+      color: white;
+      padding: 0.5em 0.75em;
+      border: 3px solid white;
+      border-radius: 5%;
+      font-size: 1.5rem;
+      font-weight: 800;
+      transition: background-color 500ms ease-out;
+
+      &:first-child {
+        margin-right: 1em;
+      }
+
+      &:hover {
+        background-color: white;
+        color: hotpink;
+      }
+    }
+  }
+}
