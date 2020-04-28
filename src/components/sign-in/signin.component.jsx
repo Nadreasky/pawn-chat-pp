@@ -26,18 +26,18 @@ const SignIn = ({ signInWithEmail }) => {
       <form className='sign-in-form' onSubmit={handleSubmit}>
         <FormInput
           type='text'
-          name='displayName'
-          id='displayName'
-          label='Display Name'
+          name='email'
+          id='email'
+          label='Email'
           value={email}
           handleChange={handleChange}
           required
         />
         <FormInput
-          type='text'
-          name='email'
-          id='email'
-          label='Email'
+          type='password'
+          name='password'
+          id='password'
+          label='Password'
           value={password}
           handleChange={handleChange}
           required

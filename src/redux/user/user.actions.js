@@ -4,7 +4,7 @@ import UserActionTypes from './user.types';
 export const emailSignUpRequest = userCredentials => {
   return {
     type: UserActionTypes.EMAIL_SIGN_UP_REQUEST,
-    payload: userCredential
+    payload: userCredentials
   };
 }
 
@@ -28,7 +28,7 @@ export const emailSignUpFailure = error => {
 export const emailSignInRequest = userCredentials => {
   return {
     type: UserActionTypes.EMAIL_SIGN_IN_REQUEST,
-    payload: userCredential
+    payload: userCredentials
   };
 }
 
