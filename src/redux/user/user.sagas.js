@@ -10,7 +10,8 @@ import {
 
 import {
   auth,
-  createUserProfileDocument
+  createUserProfileDocument,
+  getCurrentUser
 } from '../../firebase/firebase.utils';
 
 // Effect functions
@@ -48,6 +49,16 @@ export function* signInWithEmail({ payload: { email, password} }) {
     yield put(signInFailure(error.message));
   }
 }
+
+export function* isUserAuthenticated() {
+  try {
+    const userAuth = getCurrentUser();
+    if (!userAuth) return;
+    yield getSnapshotFromUserAuth(userAuth);
+  } catch (error) {
+    yield put(signInFailure(error.message));
+  }
+}
 // End Effect Functions
 
 // Listen on Redux Actions
@@ -70,6 +81,13 @@ export function* onSignInRequest() {
     UserActionTypes.EMAIL_SIGN_IN_REQUEST,
     signInWithEmail
   );
+}
+
+export function* onCheckUserSession() {
+  yield takeLatest(
+    UserActionTypes.CHECK_USER_SESSION,
+    isUserAuthenticated
+  )
 }
 // End
 

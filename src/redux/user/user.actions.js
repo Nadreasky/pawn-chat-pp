@@ -67,3 +67,11 @@ export const signOutFailure = error => {
   };
 }
 // END SIGN OUT
+
+// CHECK USER SESSION
+export const checkUserSession = () => {
+  return {
+    type: UserActionTypes.CHECK_USER_SESSION,
+  };
+}
+// END CHECK USER SESSION
