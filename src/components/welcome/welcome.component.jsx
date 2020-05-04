@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as PawnLogo } from '../../assets/images/pawn.svg';
 
-import './home.styles.scss';
+import './welcome.styles.scss';
 
-const Home = () => (
-  <div className='home'>
+const Welcome = () => (
+  <div className='welcome'>
     <PawnLogo className='logo' />
     <h1 className='title'>Welcome to PAWN chat</h1>
     <p className='description'>Just a pet project of Nadreak</p>
@@ -17,4 +17,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default Welcome;
