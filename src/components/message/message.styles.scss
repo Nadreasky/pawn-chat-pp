@@ -1,0 +1,15 @@
+@import '../../assets/css/variables';
+
+.chatting-message {
+  max-width: 30rem;
+  margin-top: 0.5rem;
+  background-color: $message-background-color;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5rem;
+
+  &.mine {
+    background-color: $mine-message-background-color;
+    color: white;
+    align-self: flex-end;
+  }
+}

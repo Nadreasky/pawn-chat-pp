@@ -14,12 +14,12 @@ const Homepage = () => {
   return (
     <React.Fragment>
       <Header />
-      <Switch>
-        <Suspense fallback={ <Spinner /> }>
-          <Route exact path='/' component={ ChattingComponent } />
-          <Route exact path='/forfun' component={ ForFun } />
-        </Suspense>
-      </Switch>
+      <Suspense fallback={<Spinner />}>
+        <Switch>
+          <Route path='/forfun' component={ForFun} />
+          <Route exact path='/' component={ChattingComponent} />
+        </Switch>
+      </Suspense>
     </React.Fragment>
   )
 };

@@ -22,13 +22,13 @@ const App = ({ currentUser, checkUserSession }) => {
 
   return (
     <React.Fragment>
-      <Switch>
-        <Suspense fallback={ <Spinner /> }>
-          <Route exact path='/signup' render={() => currentUser ? (<Redirect to='/' />) : (<SignUpPage />)} />
-          <Route exact path='/signin' render={() => currentUser ? (<Redirect to='/' />) : (<SignInPage />)} />
+      <Suspense fallback={<Spinner />}>
+        <Switch>
+          <Route path='/signup' render={() => currentUser ? (<Redirect to='/' />) : (<SignUpPage />)} />
+          <Route path='/signin' render={() => currentUser ? (<Redirect to='/' />) : (<SignInPage />)} />
           <Route path='/' render={() => currentUser ? (<HomePage />) : (<WelcomePage />)} />
-        </Suspense>
-      </Switch>
+        </Switch>
+      </Suspense>
     </React.Fragment>
   )
 }
